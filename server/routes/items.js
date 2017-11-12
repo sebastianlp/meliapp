@@ -2,51 +2,54 @@ const express = require('express');
 const itemApi = require('../meli/item');
 const router = express.Router();
 
-const basicResult = {
+const signature = {
   author: {
     name: 'Sebastián',
     lastname: 'Poliak'
   }
 };
 
+const itemMapper = (item) => {
+  return {
+    id: item.id,
+    title: item.title,
+    price: {
+      currency: item.currency_id,
+      amount: Math.floor(item.price),
+      decimals: Math.floor((item.price - Math.floor(item.price)) * 100)
+    },
+    picture: item.thumbnail,
+    condition: item.condition,
+    free_shipping: item.shipping.free_shipping
+  };
+};
+
 router.get('/', function (req, res, next) {
   const searchQuery = req.query.q;
 
-  itemApi.search(searchQuery).then(({ results, filters}) => {
-    let result = Object.assign({}, basicResult);
-    
+  itemApi.search(searchQuery).then(({ results, filters}) => {   
     const categories = filters
       .find(filter => filter.id = 'category')
       .values[0] // weird
       .path_from_root
       .map(path => path.name);
 
-    const items = results.slice(0, 4).map(item => { // get first four items from result array
-      return {
-        id: item.id,
-        title: item.title,
-        price: {
-          currency: item.currency_id,
-          amount: Math.floor(item.price),
-          decimals: Math.floor((item.price - Math.floor(item.price)) * 100)
-        },
-        picture: item.thumbnail,
-        condition: item.condition,
-        free_shipping: item.shipping.free_shipping
-      };
-    });
+    const items = results.slice(0, 4).map(itemMapper); // get first four items from result array
 
-    result.categories = categories;
-    result.items = items;
-
-    res.json(result);
+    res.json(Object.assign({}, signature, {items}, {categories}));
   });
 });
 
 router.get('/:id', function (req, res, next) {
   const itemId = req.params.id;
 
-  Promise.all([itemApi.item(itemId), itemApi.itemDescription(itemId)]).then(result => res.json(result)).catch(err => { console.log(err); res.json(err);});
+  Promise.all([itemApi.item(itemId), itemApi.itemDescription(itemId)]).then(result => {
+    // let result = Object.assign({}, signature);
+    const item = result[0];
+    const description = result[0];
+
+    // res.json(Object.assign({}, signature, {item: }))
+  });
   
   // res.json({
   //   item_id: itemId
