@@ -8,8 +8,11 @@ const item = itemId => fetch(`${baseUrl}/items/${itemId}`).then(res => res.json(
 
 const itemDescription = itemId => fetch(`${baseUrl}/items/${itemId}/description`).then(res => res.json());
 
+const itemCategory = categoryId => fetch(`${baseUrl}/categories/${categoryId}`).then(res => res.json());
+
 module.exports = {
   search,
   item,
-  itemDescription
+  itemDescription,
+  itemCategory
 };

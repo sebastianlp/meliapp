@@ -9,7 +9,7 @@ const signature = {
   }
 };
 
-const itemMapper = (item) => {
+const itemMapper = item => {
   return {
     id: item.id,
     title: item.title,
@@ -24,6 +24,8 @@ const itemMapper = (item) => {
   };
 };
 
+const pathMapper = pathFromRoot => pathFromRoot.name;
+
 router.get('/', function (req, res, next) {
   const searchQuery = req.query.q;
 
@@ -32,7 +34,7 @@ router.get('/', function (req, res, next) {
       .find(filter => filter.id = 'category')
       .values[0] // weird
       .path_from_root
-      .map(path => path.name);
+      .map(pathMapper);
 
     const items = results.slice(0, 4).map(itemMapper); // get first four items from result array
 
@@ -43,17 +45,23 @@ router.get('/', function (req, res, next) {
 router.get('/:id', function (req, res, next) {
   const itemId = req.params.id;
 
-  Promise.all([itemApi.item(itemId), itemApi.itemDescription(itemId)]).then(result => {
-    // let result = Object.assign({}, signature);
-    const item = result[0];
-    const description = result[0];
-
-    // res.json(Object.assign({}, signature, {item: }))
+  Promise.all([itemApi.item(itemId), itemApi.itemDescription(itemId)]).then(([item, description]) => {
+    // this request is to get the category of the item and make the item bradcrumb
+    itemApi.itemCategory(item.category_id).then(category => {
+      const categories = category.path_from_root.map(pathMapper); // we use the same mapper as from items
+      
+      res.json(Object.assign({},
+        signature,
+        {
+          item: Object.assign({}, itemMapper(item), {
+            description: description.text,
+            sold_quantity: item.sold_quantity
+          })
+        },
+        { categories }
+      ));
+    });
   });
-  
-  // res.json({
-  //   item_id: itemId
-  // });
 });
 
 module.exports = router;
