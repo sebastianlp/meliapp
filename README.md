@@ -1,8 +1,21 @@
-# Intention
-1. The server side part of this application it's kind of proxy that leverage the MELI response with new fields and clear some other.
-2. The client side part is the application that request to 1 and show user information.
+# How to
 
-# Notes
-I want to use the new features of ES both server side and client side, so I use babel to transpile code.
+1. Install dependencies 
+  
+  ```bash
+  $ npm install
+  ```
 
-I use webpack to bundle and handle most of the "magic" things
+2. Run dev server
+  
+  ```bash
+  $ npm run dev
+  ```
+
+3. Build for production and serve
+  ```bash
+  $ npm run build
+  $ npm run serve
+  ```
+
+**In order to use the API you have to install [PM2](https://github.com/Unitech/pm2)**

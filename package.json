@@ -6,11 +6,13 @@
     "url": "git+https://github.com/sebastianlp/meliapp.git"
   },
   "proxy": "http://localhost:3001",
+  "homepage": "http://localhost:30001",
   "scripts": {
-    "dev": "npm-run-all api start",
+    "serve": "pm2 start ./server/index.js",
+    "dev": "npm-run-all server start",
     "start": "npm-run-all -p watch-css start-js",
     "start-js": "react-scripts start",
-    "api": "pm2 start --watch -f ./server/index.js",
+    "server": "pm2 start --watch -f ./server/index.js",
     "build": "npm-run-all build-css build-js",
     "build-js": "react-scripts build",
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
@@ -23,7 +25,6 @@
   "bugs": {
     "url": "https://github.com/sebastianlp/meliapp/issues"
   },
-  "homepage": "https://github.com/sebastianlp/meliapp#readme",
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
     "express": "^4.16.2",

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Breadcrumb from './Breadcrumb';
 import Price from './Price';
 import Api from '../api';
+import FreeShipping from './FreeShipping.png';
 import './ItemsView.css';
 
 export default class ItemsView extends Component {
@@ -56,13 +57,18 @@ export default class ItemsView extends Component {
                   <div className="col">
                     <div className="item-price-container">
                       <Price price={item.price.amount} currency={item.price.currency} />
+                      {item.free_shipping &&
+                        <span className="item-free-shipping-container">
+                          <img src={FreeShipping} alt="Envío gratis" />
+                        </span>
+                      }
                     </div>
                     <div className="item-title-container">
-                      <Link to={`/items/${item.id}`}>
-                        <span className="item-title">
-                          {item.title}
-                        </span>
-                      </Link>
+                        <Link to={`/items/${item.id}`}>
+                          <span className="item-title">
+                            {item.title}
+                          </span>
+                        </Link>
                     </div>
                   </div>
                 </div>
