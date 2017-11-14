@@ -1,0 +1,19 @@
+.breadcrumb {
+  color: #666666;
+  font-size: 14px;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  
+  .breadcrumb-item + .breadcrumb-item::before {
+    content: '>' !important;
+  }
+
+  .breadcrumb-item:last-child {
+    font-weight: bold;
+    &::before{
+        font-weight: normal;
+    }
+  }
+}

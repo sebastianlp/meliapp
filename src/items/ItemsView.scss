@@ -1,0 +1,28 @@
+.list-container {
+  .item-list-container {
+    background-color: #FFFFFF;
+    margin-top: 16px;
+
+    .item-img-container {
+      margin: 16px 16px;
+
+      img {
+        width: 180px;
+        height: 180px;
+      }
+    }
+
+    .item-price-container {
+      margin: 32px 0;
+      font-size: 24px;
+
+      .item-price {
+        font-size: 24px;
+      }
+    }
+
+    .item-title-container {
+      font-size: 18px;
+    }
+  }
+}

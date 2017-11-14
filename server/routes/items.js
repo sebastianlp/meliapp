@@ -29,12 +29,16 @@ const pathMapper = pathFromRoot => pathFromRoot.name;
 router.get('/', function (req, res, next) {
   const searchQuery = req.query.q;
 
-  itemApi.search(searchQuery).then(({ results, filters}) => {   
-    const categories = filters
-      .find(filter => filter.id = 'category')
-      .values[0] // weird
-      .path_from_root
-      .map(pathMapper);
+  itemApi.search(searchQuery).then(({ results, filters}) => {
+    let categories = [];
+    
+    if (filters.length > 0) { // this check prevents that the query doesn't have any filter, so I can't populate the categories array
+      categories = filters
+        .find(filter => filter.id = 'category')
+        .values[0] // weird but subsaned with that if
+        .path_from_root
+        .map(pathMapper);
+    }
 
     const items = results.slice(0, 4).map(itemMapper); // get first four items from result array
 

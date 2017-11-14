@@ -1,0 +1,42 @@
+{
+  "name": "meliapp",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastianlp/meliapp.git"
+  },
+  "proxy": "http://localhost:3001",
+  "scripts": {
+    "dev": "npm-run-all api start",
+    "start": "npm-run-all -p watch-css start-js",
+    "start-js": "react-scripts start",
+    "api": "pm2 start --watch -f ./server/index.js",
+    "build": "npm-run-all build-css build-js",
+    "build-js": "react-scripts build",
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "author": "Sebastián Poliak <sebastianl.poliak@gmail.com>",
+  "license": "WTPL",
+  "bugs": {
+    "url": "https://github.com/sebastianlp/meliapp/issues"
+  },
+  "homepage": "https://github.com/sebastianlp/meliapp#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
+    "express": "^4.16.2",
+    "node-fetch": "^1.7.3",
+    "node-sass-chokidar": "0.0.3",
+    "query-string": "^5.0.1",
+    "react": "^16.1.0",
+    "react-dom": "^16.1.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.2"
+  }
+}

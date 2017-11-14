@@ -1,0 +1,46 @@
+.item-information-container {
+  background-color: #FFFFFF;
+
+  img {
+    width: 680px;
+  }
+
+  .condition-container {
+    margin-top: 32px;
+    font-size: 14px;
+  }
+
+  .title-container {
+    margin-top: 16px;
+    font-size: 24px;
+  }
+  
+  .price-container {
+    margin-top: 32px;
+    font-size: 46px;
+
+    .item-price {
+      font-size: 46px;
+    }
+  }
+
+  .buy-form-container {
+    margin-top: 32px;
+    margin-right: 32px;
+
+    .buy-button {
+      background-color: #3483fA;
+      color: #FFF;
+    }
+  }
+
+  .title-description-container {
+    font-size: 28px;
+    margin-left: 32px;
+  }
+
+  .description-container {
+    margin: 0 32px;
+    font-size: 16px;
+  }
+}

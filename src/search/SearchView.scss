@@ -1,0 +1,21 @@
+@import "bootstrap/scss/mixins";
+
+.search {
+  background-color: #FFE600;
+  font-size: 18px;
+
+  .brand-logo {
+    width: 53px;
+    height: 36px;
+  }
+
+  .search-image-button {
+    display: inline-block;
+    @include text-hide;
+    background-color: #EEEEEE;
+    background-image: url('./Search.png');
+    background-size: 18px 18px;
+    background-position: 2px 2px;
+    background-repeat: no-repeat;
+  }
+}
