@@ -5,12 +5,12 @@ export default class Condition extends Component {
     const condition = this.props.condition;
     const soldQuantity = this.props.soldQuantity;
 
+    if (soldQuantity < 0) {
+      return null;
+    }
+
     return (
-      <div className="condition-container">
-        {soldQuantity > 0 &&
-          <span>{condition === 'new' ? 'Nuevo' : 'Usado'} - {soldQuantity} vendido{soldQuantity > 1 ? 's' : ''}</span>
-        }
-      </div>
+      <span>{condition === 'new' ? 'Nuevo' : 'Usado'} - {soldQuantity} vendido{soldQuantity > 1 ? 's' : ''}</span>
     );
   }
 }

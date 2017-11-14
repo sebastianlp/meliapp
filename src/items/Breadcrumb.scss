@@ -1,5 +1,7 @@
+@import '../variables.scss';
+
 .breadcrumb {
-  color: #666666;
+  color: $evil-gray;
   font-size: 14px;
   padding-top: 0px !important;
   padding-bottom: 0px !important;

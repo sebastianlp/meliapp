@@ -1,21 +1,15 @@
-@import "bootstrap/scss/mixins";
+@import 'bootstrap/scss/mixins';
+@import '../variables.scss';
 
-.search {
-  background-color: #FFE600;
-  font-size: 18px;
+.search-bar {
+  background-color: $yellow;
 
-  .brand-logo {
-    width: 53px;
-    height: 36px;
+  .search-input {
+    max-width: 300px;
   }
 
-  .search-image-button {
-    display: inline-block;
+  .impose-image {
     @include text-hide;
-    background-color: #EEEEEE;
-    background-image: url('./Search.png');
-    background-size: 18px 18px;
-    background-position: 2px 2px;
-    background-repeat: no-repeat;
+    background: $tiny-gray url('./Search.png') 7px 9px/18px 18px no-repeat;
   }
 }

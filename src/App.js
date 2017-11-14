@@ -13,7 +13,7 @@ export default class App extends Component {
         <Route path="/" component={SearchView} />
 
         {/* I use Switch because I want to render exactly one route => component and not every match
-        Use exact in items to make "hack" the switch and allow to render /items/1 and not /items/ because he match it */}
+        Use exact in items to "hack" the switch and allow to render /items/1 and not /items/ because he match it */}
         <div className="container">
           <div className="row">
             <div className="col">

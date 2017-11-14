@@ -1,46 +1,56 @@
-.item-information-container {
-  background-color: #FFFFFF;
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+@import '../variables.scss';
 
-  img {
-    width: 680px;
-  }
+.item-info-container {
+  background: white;
 
-  .condition-container {
-    margin-top: 32px;
-    font-size: 14px;
-  }
-
-  .title-container {
-    margin-top: 16px;
-    font-size: 24px;
-  }
-  
-  .price-container {
-    margin-top: 32px;
-    font-size: 46px;
-
-    .item-price {
-      font-size: 46px;
+  .item-img-container {
+    @include media-breakpoint-up(sm) {
+      img {
+        width: 680px;
+      }
     }
   }
 
-  .buy-form-container {
+  .item-condition-container {
+    margin-top: $x-normal-margin;
+    font-size: $normal-size;
+  }
+
+  .item-title-container {
+    margin-top: $normal-margin;
+
+    .title {
+      font-size: $normal-size;
+    }
+  }
+
+  .item-price-container {
+    margin-top: $x-normal-margin;
+    font-size: 46px;
+  }
+
+  .item-buy-form-container {
     margin-top: 32px;
     margin-right: 32px;
 
-    .buy-button {
-      background-color: #3483fA;
-      color: #FFF;
+    .item-buy-button {
+      background-color: $action-button-color;
+      color: #FFFFFF;
     }
   }
 
-  .title-description-container {
-    font-size: 28px;
-    margin-left: 32px;
+  .item-description-title-container {
+    margin-left: $x-normal-margin;
+      
+    span {
+      font-size: 28px;
+    }
   }
 
-  .description-container {
-    margin: 0 32px;
-    font-size: 16px;
+  .item-description-container {
+    margin-top: 32px;
+    margin-bottom: 32px;
   }
 }

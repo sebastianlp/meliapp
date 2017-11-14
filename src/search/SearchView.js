@@ -42,31 +42,25 @@ export default class Search extends Component {
 
   render() {
     return (
-      <header className="navbar search">
-        <div className="container">
-          <div className="row">
-            <div className="col-1">
-              <Link to="/" className="navbar-brand">
-                <img src={Logo} alt="Mercado Libre" className="brand-logo" />
-              </Link>
+      <header className="navbar search-bar" role="navigation">
+        <div className="action-container d-flex justify-content-center">
+          <Link className="navbar-brand" to="/">
+            <img src={Logo} alt="Mercado Libre" width="53" height="36" />
+          </Link>
+          <form onSubmit={this.handleSubmit} className="form-inline col-7">
+            <div className="input-group col">
+              <input 
+                type="text" 
+                className="form-control border-0"
+                placeholder="Nunca dejes de buscar"
+                onChange={this.handleChange}
+                value={this.state.search}
+              />
+              <div className="input-group-btn">
+                <button className="btn impose-image" type="submit">Buscar</button>
+              </div>
             </div>
-            <div className="col">
-              <form onSubmit={this.handleSubmit}>
-                <div className="input-group">
-                  <input
-                    type="text"
-                    className="form-control border-0"
-                    placeholder="Nunca dejes de buscar"
-                    onChange={this.handleChange}
-                    value={this.state.search}
-                  />
-                  <span className="input-group-btn">
-                    <button type="submit" className="btn search-image-button">Buscar</button>
-                  </span>
-                </div>
-              </form>
-            </div>
-          </div>
+          </form>
         </div>
       </header>
     );

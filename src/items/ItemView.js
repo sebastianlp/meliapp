@@ -39,40 +39,48 @@ export default class ItemView extends Component {
   render() {
     return (
       <div className="item-container">
-        {this.state.categories &&
+        {this.state.categories && 
           <div className="breadcrumb-container">
             <Breadcrumb levels={this.state.categories} />
           </div>
         }
         {this.state.item &&
-          <div className="item-information-container">
-            <div className="row">
-              <div className="col-9">
-                <img src={this.state.item.picture} alt={this.state.item.title} />
+          <div className="item-info-container container">
+            <div className="row text-center">
+              <div className="col-sm-3 col-lg-8">
+                <div className="item-img-container">
+                  <img src={this.state.item.picture} alt={this.state.item.title} />
+                </div>
               </div>
-              <div className="col-3">
-                <div className="condition-container">
-                  <Condition condition={this.state.item.condition} soldQuantity={this.state.item.sold_quantity} />
+              <div className="col-sm-9 col-lg-4">
+                <div className="item-condition-container">
+                  <Condition condition={this.state.itemId.condition} soldQuantity={this.state.item.sold_quantity} />
                 </div>
-                <div className="title-container">
-                  <span className="title">{this.state.item.title}</span>
+                <div className="item-title-container">
+                  <span className="item-title">{this.state.item.title}</span>
                 </div>
-                <div className="price-container">
+                <div className="item-price-container">
                   <Price price={this.state.item.price.amount} currency={this.state.item.price.currency} />
                 </div>
-                <div className="buy-form-container">
+                <div className="item-buy-form-container">
                   <form onSubmit={this.handleSubmit}>
-                    <button className="buy-button btn btn-lg" type="submit">Comprar</button>
+                    <button className="btn btn-lg item-buy-button" type="submit">Comprar</button>
                   </form>
                 </div>
               </div>
             </div>
             <div className="row">
               <div className="col">
-                <div className="title-description-container">
-                  <span>Descripción del producto</span>
+                <div className="item-description-title-container">
+                  <span>Descripcion del producto</span>
                 </div>
-                <div className="description-container" dangerouslySetInnerHTML={{ __html: this.state.item.description }}></div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <div className="item-description-container">
+                  <div dangerouslySetInnerHTML={{ __html: this.state.item.description }}></div>
+                </div>
               </div>
             </div>
           </div>
