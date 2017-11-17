@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sebastianlp/meliapp.svg?branch=master)](https://travis-ci.org/sebastianlp/meliapp)
+
 # How to
 
 1. Install dependencies 
